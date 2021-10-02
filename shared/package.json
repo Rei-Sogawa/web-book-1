@@ -1,0 +1,16 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "tsc src/index.ts -d && npm pack"
+  },
+  "dependencies": {
+    "firebase": "^9.1.1",
+    "firebase-admin": "^9.12.0"
+  }
+}
