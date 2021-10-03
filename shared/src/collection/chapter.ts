@@ -21,8 +21,8 @@ export const getDefaultChapterData =
   })
 
 export const chaptersPath = ({ bookId }: { bookId: string }) => {
-  return `books/${bookId}/chapters`
+  return ['books', bookId, 'chapters'].join('/')
 }
 export const chapterPath = ({ bookId, chapterId }: { bookId: string; chapterId: string }) => {
-  return `books/${bookId}/chapters/${chapterId}`
+  return ['books', bookId, 'chapters', chapterId].join('/')
 }

@@ -1,3 +1,3 @@
-export * as Book from './collection/book'
-export * as Chapter from './collection/chapter'
-export * as ChapterSummary from './collection/chapterSummary'
+export * as _Book from './collection/book'
+export * as _Chapter from './collection/chapter'
+export * as _ChapterSummary from './collection/chapterSummary'

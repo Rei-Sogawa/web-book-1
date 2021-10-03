@@ -30,5 +30,5 @@ export const booksPath = () => {
   return 'books'
 }
 export const bookPath = ({ bookId }: { bookId: string }) => {
-  return `books/${bookId}`
+  return ['books', bookId].join('/')
 }

@@ -7,6 +7,7 @@ function App() {
   useEffect(() => {
     httpsCallable(functions, 'hello')().then((res) => console.log(res))
     httpsCallable(functions, 'goodBye')().then((res) => console.log(res))
+    httpsCallable(functions, 'goodEvening')().then((res) => console.log(res))
   }, [])
 
   return <div>App Component</div>

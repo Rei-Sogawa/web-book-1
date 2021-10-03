@@ -1,5 +1,11 @@
 {
-  "projects": {
-    "default": "playground-67a20"
+  "targets": {
+    "playground-67a20": {
+      "hosting": {
+        "frontend": [
+          "playground-67a20"
+        ]
+      }
+    }
   }
 }
