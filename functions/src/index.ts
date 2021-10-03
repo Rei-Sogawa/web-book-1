@@ -6,6 +6,10 @@ import { Book, Chapter } from 'shared'
 const TOKYO = 'asia-northeast1'
 const functionsWithRegion = functions.region(TOKYO)
 
-export const hello = functionsWithRegion.https.onRequest((req, res) => {
-  res.status(200).send('Hello')
+export const hello = functionsWithRegion.https.onCall(() => {
+  return 'Hello World'
+})
+
+export const goodBye = functionsWithRegion.https.onCall(() => {
+  return 'Good Bye World'
 })
