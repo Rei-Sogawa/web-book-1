@@ -7,12 +7,25 @@ const SIGN_UP = '/sign-up'
 const SIGN_IN = '/sign-in'
 const USER_SHOW = '/users/:userId'
 const LIBRARY = '/users/:userId/library'
-const LIBRARY_SHOW = '/users/:userId/library/:bookId'
-const LIBRARY_CHAPTER_SHOW = '/users/:userId/library/:bookId/chapters/:chapterId'
+const LIBRARY_SHOW = '/users/:userId/library/:bookId' /* <- viewer */
+const LIBRARY_CHAPTER_SHOW = '/users/:userId/library/:bookId/chapters/:chapterId' /* <- viewer */
 const ORDERS = '/users/:userId/orders'
 const CART = '/users/:userId/cart'
 const BOOKS = '/books'
 const BOOK_SHOW = '/books/:bookId'
+
+/**
+ * frontend-admin のページ一覧
+ * /
+ * /sign-up
+ * /sign-in
+ * /books
+ * /books/new
+ * /books/:bookId <- viewer
+ * /books/:bookId/edit
+ * /books/:bookId/chapters/:chapterId <- viewer
+ * /books/:bookId/chapters/:chapterId/edit
+ */
 
 export const routeMap = {
   [HOME]: {
