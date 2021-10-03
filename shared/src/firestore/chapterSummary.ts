@@ -1,26 +1,25 @@
-import { ChapterData } from './chapter'
+import * as Chapter from './chapter'
 
-export type ChapterSummaryData = { chapterId: string } & Pick<
-  ChapterData<void>,
+export type Data = { chapterId: string } & Pick<
+  Chapter.Data<void>,
   'number' | 'title' | 'wardCount'
 >
 
-export const getDefaultChapterSummaryData = (): ChapterSummaryData => ({
+export const getDefaultData = (): Data => ({
   chapterId: '',
   number: 0,
   title: '',
   wardCount: 0,
 })
 
-export const chapterSummariesPath = ({ bookId }: { bookId: string }) => {
-  return ['books', bookId, 'chapterSummaries'].join('/')
-}
-export const chapterSummaryPath = ({
-  bookId,
-  chapterSummaryId,
-}: {
+export type CollectionPathParams = {
   bookId: string
+}
+
+export type DocPathParams = CollectionPathParams & {
   chapterSummaryId: string
-}) => {
-  return ['books', bookId, 'chapterSummaries', chapterSummaryId].join('/')
+}
+
+export const getCollectionPath = ({ bookId }: CollectionPathParams) => {
+  return ['books', bookId, 'chapterSummaries'].join('/')
 }

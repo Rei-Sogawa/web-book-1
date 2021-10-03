@@ -6,9 +6,9 @@ const HOME = '/'
 const SIGN_UP = '/sign-up'
 const SIGN_IN = '/sign-in'
 const USER_SHOW = '/users/:userId'
-const LIBRARY = '/users/:userId/library'
-const LIBRARY_SHOW = '/users/:userId/library/:bookId' /* <- viewer */
-const LIBRARY_CHAPTER_SHOW = '/users/:userId/library/:bookId/chapters/:chapterId' /* <- viewer */
+const USER_BOOKS = '/users/:userId/books'
+const USER_BOOK_SHOW = '/users/:userId/books/:bookId' /* <- viewer */
+const USER_BOOK_CHAPTER_SHOW = '/users/:userId/book/:bookId/chapters/:chapterId' /* <- viewer */
 const ORDERS = '/users/:userId/orders'
 const CART = '/users/:userId/cart'
 const BOOKS = '/books'
@@ -56,21 +56,21 @@ export const routeMap = {
     Component: HomePage,
   },
 
-  [LIBRARY]: {
+  [USER_BOOKS]: {
     path: ({ userId }: { userId: string }) => {
-      return generatePath(LIBRARY, { userId })
+      return generatePath(USER_BOOKS, { userId })
     },
     Component: HomePage,
   },
 
-  [LIBRARY_SHOW]: {
+  [USER_BOOK_SHOW]: {
     path: ({ userId, bookId }: { userId: string; bookId: string }) => {
-      return generatePath(LIBRARY_SHOW, { userId, bookId })
+      return generatePath(USER_BOOK_SHOW, { userId, bookId })
     },
     Component: HomePage,
   },
 
-  [LIBRARY_CHAPTER_SHOW]: {
+  [USER_BOOK_CHAPTER_SHOW]: {
     path: ({
       userId,
       bookId,
@@ -80,7 +80,7 @@ export const routeMap = {
       bookId: string
       chapterId: string
     }) => {
-      return generatePath(LIBRARY_CHAPTER_SHOW, { userId, bookId, chapterId })
+      return generatePath(USER_BOOK_CHAPTER_SHOW, { userId, bookId, chapterId })
     },
     Component: HomePage,
   },

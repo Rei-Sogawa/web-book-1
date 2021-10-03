@@ -1,4 +1,4 @@
-export type ChapterData<Timestamp> = {
+export type Data<Timestamp> = {
   number: number
   title: string
   content: string
@@ -8,9 +8,9 @@ export type ChapterData<Timestamp> = {
   updatedAt: Timestamp
 }
 
-export const getDefaultChapterData = <TimestampOrFieldValue>(
+export const getDefaultData = <TimestampOrFieldValue>(
   now: TimestampOrFieldValue
-): ChapterData<TimestampOrFieldValue> => ({
+): Data<TimestampOrFieldValue> => ({
   number: 0,
   title: '',
   content: '',
@@ -20,9 +20,10 @@ export const getDefaultChapterData = <TimestampOrFieldValue>(
   updatedAt: now,
 })
 
-export const chaptersPath = ({ bookId }: { bookId: string }) => {
+export type CollectionPathParams = { bookId: string }
+
+export type DocPathParams = CollectionPathParams & { chapterId: string }
+
+export const getCollectionPath = ({ bookId }: CollectionPathParams) => {
   return ['books', bookId, 'chapters'].join('/')
-}
-export const chapterPath = ({ bookId, chapterId }: { bookId: string; chapterId: string }) => {
-  return ['books', bookId, 'chapters', chapterId].join('/')
 }

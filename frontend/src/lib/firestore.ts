@@ -1,4 +1,6 @@
 import {
+  collection,
+  doc,
   DocumentData,
   DocumentReference,
   FirestoreDataConverter,
@@ -10,14 +12,33 @@ import {
 } from 'firebase/firestore'
 import { DependencyList, useEffect, useState } from 'react'
 
+import { db } from '../firebaseApp'
+
 export type WithId<T> = T & { id: string }
 
 const snapshotOptions: SnapshotOptions = { serverTimestamps: 'estimate' }
 
-export const createConvertor = <T>(): FirestoreDataConverter<T> => ({
+export const createConvertor = <T>(defaultData?: T): FirestoreDataConverter<T> => ({
   toFirestore: (data) => data as DocumentData,
-  fromFirestore: (snap, options) => snap.data(options) as T,
+  fromFirestore: (snap, options) => ({ ...defaultData, ...snap.data(options) } as T),
 })
+
+export const createRef = <T, PathParams>(
+  collectionPath: (params: PathParams) => string,
+  defaultData?: T
+) => {
+  const convertor = createConvertor<T>(defaultData)
+  const collectionRef = (params: PathParams) => {
+    return collection(db, collectionPath(params)).withConverter(convertor)
+  }
+  const docRef = (id: string, params: PathParams) => {
+    return doc(db, collectionPath(params), id).withConverter(convertor)
+  }
+  return {
+    collectionRef,
+    docRef,
+  }
+}
 
 export const fetchDocs = async <T>(query: Query<T>) => {
   const snap = await getDocs(query)
