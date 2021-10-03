@@ -1,4 +1,3 @@
-export * as Admin from './admin'
-export * as Client from './client'
-
-export { booksPath, bookPath } from './collection/book'
+export * as Book from './collection/book'
+export * as Chapter from './collection/chapter'
+export * as ChapterSummary from './collection/chapterSummary'
