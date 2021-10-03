@@ -9,5 +9,4 @@ const { collectionRef, docRef } = createRef<
   _ChapterSummary.CollectionPathParams
 >(_ChapterSummary.getCollectionPath)
 export const chapterSummariesRef = collectionRef
-export const chapterSummaryRef = ({ bookId, chapterSummaryId }: _ChapterSummary.DocPathParams) =>
-  docRef(chapterSummaryId, { bookId })
+export const chapterSummaryRef = docRef
