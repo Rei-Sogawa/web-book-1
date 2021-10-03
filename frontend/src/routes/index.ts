@@ -34,36 +34,42 @@ export const routeMap = {
     },
     Component: HomePage,
   },
+
   [SIGN_UP]: {
     path: () => {
       return generatePath(SIGN_UP)
     },
     Component: HomePage,
   },
+
   [SIGN_IN]: {
     path: () => {
       return generatePath(SIGN_IN)
     },
     Component: HomePage,
   },
+
   [USER_SHOW]: {
     path: ({ userId }: { userId: string }) => {
       return generatePath(USER_SHOW, { userId })
     },
     Component: HomePage,
   },
+
   [LIBRARY]: {
     path: ({ userId }: { userId: string }) => {
       return generatePath(LIBRARY, { userId })
     },
     Component: HomePage,
   },
+
   [LIBRARY_SHOW]: {
     path: ({ userId, bookId }: { userId: string; bookId: string }) => {
       return generatePath(LIBRARY_SHOW, { userId, bookId })
     },
     Component: HomePage,
   },
+
   [LIBRARY_CHAPTER_SHOW]: {
     path: ({
       userId,
@@ -78,24 +84,28 @@ export const routeMap = {
     },
     Component: HomePage,
   },
+
   [ORDERS]: {
     path: ({ userId }: { userId: string }) => {
       return generatePath(ORDERS, { userId })
     },
     Component: HomePage,
   },
+
   [CART]: {
     path: ({ userId }: { userId: string }) => {
       return generatePath(CART, { userId })
     },
     Component: HomePage,
   },
+
   [BOOKS]: {
     path: () => {
       return generatePath(BOOKS)
     },
     Component: HomePage,
   },
+
   [BOOK_SHOW]: {
     path: ({ bookId }: { bookId: string }) => {
       return generatePath(BOOK_SHOW, { bookId })
