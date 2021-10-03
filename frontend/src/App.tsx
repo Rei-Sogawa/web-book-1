@@ -1,16 +1,23 @@
-import { httpsCallable } from 'firebase/functions'
-import { useEffect } from 'react'
+import { VFC } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { functions } from './firebaseApp'
+import { pathTemplates, routeMap } from './routes'
 
-function App() {
-  useEffect(() => {
-    httpsCallable(functions, 'hello')().then((res) => console.log(res))
-    httpsCallable(functions, 'goodBye')().then((res) => console.log(res))
-    httpsCallable(functions, 'goodEvening')().then((res) => console.log(res))
-  }, [])
-
-  return <div>App Component</div>
+const App: VFC = () => {
+  return (
+    <Router>
+      <Switch>
+        {pathTemplates.map((pathTemplate, index) => {
+          const { Component } = routeMap[pathTemplate]
+          return (
+            <Route key={index} path={pathTemplate} exact>
+              <Component />
+            </Route>
+          )
+        })}
+      </Switch>
+    </Router>
+  )
 }
 
 export default App

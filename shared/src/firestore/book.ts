@@ -11,20 +11,20 @@ export type BookData<Timestamp> = {
   purchaserIds: string[]
 }
 
-export const getDefaultBookData =
-  <FieldValue>(serverTimestamp: () => FieldValue) =>
-  (): BookData<FieldValue> => ({
-    title: '',
-    description: '',
-    authorNames: [],
-    image: null,
-    price: 0,
-    published: false,
-    releasedAt: null,
-    createdAt: serverTimestamp(),
-    updatedAt: serverTimestamp(),
-    purchaserIds: [],
-  })
+export const getDefaultBookData = <TimestampOrFieldValue>(
+  now: TimestampOrFieldValue
+): BookData<TimestampOrFieldValue> => ({
+  title: '',
+  description: '',
+  authorNames: [],
+  image: null,
+  price: 0,
+  published: false,
+  releasedAt: null,
+  createdAt: now,
+  updatedAt: now,
+  purchaserIds: [],
+})
 
 export const booksPath = () => {
   return 'books'

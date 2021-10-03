@@ -8,17 +8,17 @@ export type ChapterData<Timestamp> = {
   updatedAt: Timestamp
 }
 
-export const getDefaultChapterData =
-  <FieldValue>(serverTimestamp: () => FieldValue) =>
-  (): ChapterData<FieldValue> => ({
-    number: 0,
-    title: '',
-    content: '',
-    wardCount: 0,
-    images: [],
-    createdAt: serverTimestamp(),
-    updatedAt: serverTimestamp(),
-  })
+export const getDefaultChapterData = <TimestampOrFieldValue>(
+  now: TimestampOrFieldValue
+): ChapterData<TimestampOrFieldValue> => ({
+  number: 0,
+  title: '',
+  content: '',
+  wardCount: 0,
+  images: [],
+  createdAt: now,
+  updatedAt: now,
+})
 
 export const chaptersPath = ({ bookId }: { bookId: string }) => {
   return ['books', bookId, 'chapters'].join('/')
